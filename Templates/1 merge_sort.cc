@@ -16,19 +16,19 @@ using namespace std;
 #define MAX_N 1000
 
 template <typename T>
-inline void _merge(T *first1, T *last1, T *first2, T *last2, T *result, bool (*comp)(T&, T&) = [](T &a, T &b){ return a <= b; }) {
+inline void _merge(T *first1, T *last1, T *first2, T *last2, T *result, bool (*comp)(T&, T&) = [](T &a, T &b){ return a < b; }) {
 	int size = last1-first1+last2-first2;
 	T* tmp = new T[size];
 	T *i = first1, *j = first2;
 	int k = 0;
 	while (true) {
-		if (comp(*i, *j)) {
-			tmp[k++] = *i++;
-			if (i == last1) break;
-		}
-		else {
+		if (comp(*j, *i)) {
 			tmp[k++] = *j++;
 			if (j == last2) break;
+		}
+		else {
+			tmp[k++] = *i++;
+			if (i == last1) break;
 		}
 	}
 	if (i < last1) {
