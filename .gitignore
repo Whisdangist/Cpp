@@ -3,3 +3,4 @@ Solution.cc
 input.txt
 error.txt
 output.txt
+*.bak

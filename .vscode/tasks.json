@@ -14,7 +14,8 @@
                 "Solution",
                 "-ggdb",
                 "-D",
-                "OFFLINE"
+                "OFFLINE",
+                "-Wall"
             ],
             "group": {
                 "kind": "build",
