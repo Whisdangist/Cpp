@@ -28,18 +28,19 @@ struct Node {
 	}
 };
 
+
 template <typename T>
 struct Heap {
-	int size = 0;
+	size_t _size = 0;
 	T a[MAX_N+1];
 	void heapify(int index) {
 		int left = index * 2;
 		int right = index * 2 + 1;
 		int smallest = index;
-		if (left <= size) {
+		if (left <= _size) {
 			smallest = a[left] < a[right] ? left : right;
 		}
-		if (right <= size) { 
+		if (right <= _size) { 
 			smallest = a[smallest] < a[index] ? smallest : index;
 		}
 		if (smallest != index) {
@@ -61,23 +62,29 @@ struct Heap {
 		}
 	}
 	void sort() {
-		while (size > 1) {
+		while (_size > 1) {
 			T temp = a[1];
-			a[1] = a[size];
-			a[size--] = temp;
+			a[1] = a[_size];
+			a[_size--] = temp;
 			heapify(1);
 		}
 	}
 	void push(T n) {
-		a[++size] = n;
-		decrease_key(size);
+		a[++_size] = n;
+		decrease_key(_size);
 	}
 	void pop() {
-		a[1] = a[size--];
+		a[1] = a[_size--];
 		heapify(1);
 	}
 	T top() {
 		return a[1];
+	}
+	void clear() {
+		this->_size = 0;
+	}
+	size_t size() {
+		return this->_size;
 	}
 };
 
