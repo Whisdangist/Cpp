@@ -38,10 +38,10 @@ struct Heap {
 		int right = index * 2 + 1;
 		int smallest = index;
 		if (left <= _size) {
-			smallest = a[left] < a[right] ? left : right;
+			smallest = a[left] < a[index] ? left : index;
 		}
 		if (right <= _size) { 
-			smallest = a[smallest] < a[index] ? smallest : index;
+			smallest = a[smallest] < a[right] ? smallest : right;
 		}
 		if (smallest != index) {
 			T temp = a[smallest];
